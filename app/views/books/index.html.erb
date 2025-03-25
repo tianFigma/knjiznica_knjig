@@ -1,0 +1,14 @@
+<h1 class="text-3xl font-semibold text-center mb-6">Books</h1>
+
+<ul class="space-y-4">
+  <% @books.each do |book| %>
+    <li class="bg-white p-4 rounded shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <%= link_to book.title, book_path(book), class: "text-xl text-blue-600 hover:text-blue-800" %>
+    </li>
+  <% end %>
+</ul>
+
+<!-- Ensuring the background color is applied correctly -->
+<div class="bg-red-500 text-white p-5 mt-6">
+  This should be red
+</div>

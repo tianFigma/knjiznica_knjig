@@ -1,0 +1,38 @@
+<h1>Create a new book</h1>
+
+<%= form_with model: @book, local: true do |form| %>
+  <% if @book.errors.any? %>
+    <div>
+      <h2>Errors:</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :categories %>
+    <%= form.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

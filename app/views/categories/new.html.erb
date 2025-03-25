@@ -1,0 +1,23 @@
+<h1>Create a new category</h1>
+
+<%= form_with model: @category, local: true do |form| %>
+  <% if @category.errors.any? %>
+    <div>
+      <h2>Errors:</h2>
+      <ul>
+        <% @category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

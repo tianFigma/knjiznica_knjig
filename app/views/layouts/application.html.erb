@@ -10,19 +10,28 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-100">
     <%= yield %>
+    <nav class="bg-gray-800 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to 'Categories', categories_path, class: "text-lg font-semibold hover:text-gray-400" %>
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "ml-4 text-white bg-red-500 hover:bg-red-700 py-1 px-4 rounded" %>
+            <%= link_to 'Books', books_path, class: "ml-4 text-lg font-semibold hover:text-gray-400" %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path, class: "text-lg font-semibold hover:text-gray-400" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
   </body>
 </html>

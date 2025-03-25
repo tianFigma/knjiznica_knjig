@@ -1,0 +1,9 @@
+<h1 class="text-3xl font-semibold text-center mb-6">Categories</h1>
+
+<ul class="space-y-4">
+  <% Category.all.each do |category| %>
+    <li class="bg-white p-4 rounded shadow hover:shadow-xl transition-shadow duration-300">
+      <%= link_to category.name, category_path(category), class: "text-xl text-blue-600 hover:text-blue-800" %>
+    </li>
+  <% end %>
+</ul>
