@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "Knjiznica Knjig" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,19 +19,27 @@
   </head>
 
   <body class="bg-gray-100">
-    <%= yield %>
-    <nav class="bg-gray-800 text-white p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <div>
-          <% if user_signed_in? %>
-            <%= link_to 'Categories', categories_path, class: "text-lg font-semibold hover:text-gray-400" %>
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "ml-4 text-white bg-red-500 hover:bg-red-700 py-1 px-4 rounded" %>
-            <%= link_to 'Books', books_path, class: "ml-4 text-lg font-semibold hover:text-gray-400" %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path, class: "text-lg font-semibold hover:text-gray-400" %>
-          <% end %>
-        </div>
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white">
+    <div class="max-w-screen-xl flex justify-between mx-auto p-4">
+      <!-- Links for the navbar -->
+      <div class="flex space-x-6">
+        <% if user_signed_in? %>
+          <%= link_to 'Categories', categories_path, class: "text-lg font-semibold hover:text-gray-400" %>
+          <%= link_to 'Books', books_path, class: "text-lg font-semibold hover:text-gray-400" %>
+          <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "ml-4 text-white bg-red-500 hover:bg-red-700 py-1 px-4 rounded" %>
+        <% else %>
+          <%= link_to 'Login', new_user_session_path, class: "text-lg font-semibold hover:text-gray-400" %>
+        <% end %>
       </div>
-    </nav>
+    </div>
+  </nav>
+  
+
+
+    <!-- Page Content (Centered below Navbar) -->
+    <div class="pt-16"> <!-- Adds padding to offset navbar -->
+      <%= yield %>
+    </div>
   </body>
 </html>
