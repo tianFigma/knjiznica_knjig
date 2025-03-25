@@ -2,7 +2,7 @@
 service: knjiznica_knjig
 
 # Name of the container image.
-image: tianfigma/knjiznica_knjig
+image: ghcr.io/tianfigma/knjiznica_knjig
 
 # Deploy to these servers.
 servers:
@@ -24,12 +24,12 @@ proxy:
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
-  # server: registry.digitalocean.com / ghcr.io / ...
-  username: knjiznica_knjig
+  server: ghcr.io
+  username: tianFigma
 
   # Always use an access token rather than real password when possible.
   password:
-    - KAMAL_REGISTRY_PASSWORD
+    - GITHUB_TOKEN
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
 env:
@@ -88,8 +88,8 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: user
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
