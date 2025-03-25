@@ -1,24 +1,62 @@
-# README
+📚 Knjiznica Knjig – A Simple Book Library Management System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A minimal yet functional book catalog system built with Ruby on Rails.
 
-Things you may want to cover:
+✨ Features
+✅ Add, Edit, and Delete Books 📖
+✅ Categorize Books with Multiple Categories 🏷️
+✅ User Authentication 🔐
+✅ Responsive Design with Tailwind CSS 🎨
+✅ Search & Filter Books 🔍
 
-* Ruby version
+🚀 Getting Started
+1️⃣ Clone the Repository
+sh
+Copy
+Edit
+git clone https://github.com/yourusername/knjiznica_knjig.git
+cd knjiznica_knjig
+2️⃣ Install Dependencies
+sh
+Copy
+Edit
+bundle install
+3️⃣ Set Up the Database
+sh
+Copy
+Edit
+rails db:migrate
+rails db:seed # Optional: Preload sample data
+4️⃣ Run the Server
+sh
+Copy
+Edit
+rails server
+Now open http://localhost:3000 in your browser! 🎉
 
-* System dependencies
+🛠 Tech Stack
+Ruby on Rails – Backend Framework
 
-* Configuration
+SQLite3 – Lightweight Database
 
-* Database creation
+Tailwind CSS – Modern UI Styling
 
-* Database initialization
+Devise – User Authentication
 
-* How to run the test suite
+🤝 Contributing
+Pull requests are welcome! If you'd like to contribute, please:
 
-* Services (job queues, cache servers, search engines, etc.)
+Fork the repository 🍴
 
-* Deployment instructions
+Create a feature branch (git checkout -b feature-name)
 
-* ...
+Commit your changes (git commit -m "Add cool feature")
+
+Push to your fork (git push origin feature-name)
+
+Submit a pull request 🔥
+
+📜 License
+This project is licensed under the MIT License.
+
+💡 Feel free to modify and use this project however you'd like! 🚀
