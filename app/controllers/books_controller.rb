@@ -15,15 +15,22 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-  
+    
     if @book.save
-      # Handle the uploaded image and categories
-      @book.categories << Category.find(params[:book][:category_ids].reject(&:blank?)) if params[:book][:category_ids].present?
-      redirect_to books_path, notice: 'Book was successfully created.'
+      selected_categories = Category.find(params[:book][:category_ids].reject(&:blank?))
+  
+      Rails.logger.debug("Categories being added: #{selected_categories.inspect}")
+  
+      @book.categories = selected_categories.uniq
+  
+      Rails.logger.debug("Categories after assigning to the book: #{@book.categories.inspect}")
+  
+      redirect_to @book, notice: 'Book was successfully created.'
     else
       render :new
     end
   end
+  
           
 
   def edit
