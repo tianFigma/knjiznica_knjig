@@ -16,7 +16,13 @@
     <%= form.collection_check_boxes :category_ids, Category.all, :id, :name %>
   </div>
 
+  <!-- Add file field for image upload -->
   <div>
-    <%= form.submit "Update Book" %>
+    <%= form.label :image, "Upload Image" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Book" %>
   </div>
 <% end %>

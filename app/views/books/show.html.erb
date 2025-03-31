@@ -9,6 +9,14 @@
     </li>
   <% end %>
 </ul>
+
+<h3 class="text-2xl font-semibold mb-4">Book Image:</h3>
+<% if @book.image.attached? %>
+  <%= image_tag @book.image, alt: "Book Image", class: "w-full h-auto" %>
+<% else %>
+  <p>No image uploaded</p>
+<% end %>
+
 <div class="flex space-x-4 mt-4">
   <%= link_to "Edit", edit_book_path(@book), class: "px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600" %>
   

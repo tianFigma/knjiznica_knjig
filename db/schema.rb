@@ -58,6 +58,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_31_113501) do
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
+  create_table "books_categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
