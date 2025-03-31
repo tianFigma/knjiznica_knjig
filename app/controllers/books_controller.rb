@@ -8,8 +8,9 @@ class BooksController < ApplicationController
     end
   
     def show
-        @book = Book.find(params[:id])
-      end
+      @book = Book.includes(:categories).find(params[:id])
+    end
+    
 
       def create
         @book = current_user.books.new(book_params)
