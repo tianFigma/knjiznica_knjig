@@ -10,10 +10,10 @@ user = User.create!(
   password_confirmation: "password"
 )
 
-# Create categories assigned to the user
+# Create categories assigned to the user via user_id
 puts "✅ Creating categories..."
-category1 = Category.create!(name: "Fiction", user: user)
-category2 = Category.create!(name: "Non-Fiction", user: user)
+category1 = Category.create!(name: "Fiction", user_id: user.id)
+category2 = Category.create!(name: "Non-Fiction", user_id: user.id)
 
 # Create books
 puts "✅ Creating books..."
