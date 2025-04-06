@@ -45,6 +45,9 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+# 🔄 Prepare database and seed it
+RUN bundle exec rails db:prepare && bundle exec rails db:seed
+
 # Final stage for the app image
 FROM base
 
@@ -59,8 +62,8 @@ RUN groupadd --system --gid 1000 rails && \
 
 USER 1000:1000
 
-# Entrypoint script for migration and server startup
-ENTRYPOINT ["bash", "-c", "bundle exec rake db:migrate && ./bin/rails server -b '0.0.0.0'"]
+# Entrypoint script for startup (no migration needed anymore since it's done in build)
+ENTRYPOINT ["./bin/rails", "server", "-b", "0.0.0.0"]
 
 # Expose port 3000 for the Rails server
 EXPOSE 3000
