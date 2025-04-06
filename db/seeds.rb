@@ -1,8 +1,11 @@
-# db/seeds.rb
-
 puts "🌱 Seeding database..."
 
-# Create a user
+# Clear old data if needed (optional)
+BookCategory.destroy_all
+Book.destroy_all
+Category.destroy_all
+User.destroy_all
+
 puts "✅ Creating demo user..."
 user = User.create!(
   email: "demo@example.com",
@@ -10,29 +13,27 @@ user = User.create!(
   password_confirmation: "password"
 )
 
-# Create categories assigned to the user via user_id
 puts "✅ Creating categories..."
-category1 = Category.create!(name: "Fiction", user_id: user.id)
-category2 = Category.create!(name: "Non-Fiction", user_id: user.id)
+fiction = Category.create!(name: "Fiction")
+history = Category.create!(name: "History")
 
-# Create books
 puts "✅ Creating books..."
 book1 = Book.create!(
-  title: "Book One",
-  author: "Author One",
-  description: "Description of Book One"
+  title: "1984",
+  author: "George Orwell",
+  description: "Dystopian classic.",
+  user: user
 )
 
 book2 = Book.create!(
-  title: "Book Two",
-  author: "Author Two",
-  description: "Description of Book Two"
+  title: "Sapiens",
+  author: "Yuval Noah Harari",
+  description: "A brief history of humankind.",
+  user: user
 )
 
-# Associate books with categories
 puts "✅ Linking books to categories..."
-book1.categories << category1
-book2.categories << category2
-book1.categories << category2
+book1.categories << fiction
+book2.categories << history
 
-puts "✅ Done seeding!"
+puts "✅ Seeding complete!"
